@@ -2,5 +2,5 @@
 Szakdolgozat c. tantárgy kódmelléklete
 
 ## Tesztelés:  
-vicc generálás: localhost:8080/ai/generate  
-saját kérdés feltétele UI-n keresztül localhost:8080/index.html
+Vicc generálás angolul: localhost:8080/ai/generate  
+Saját kérdés feltétele UI-n keresztül localhost:8080
