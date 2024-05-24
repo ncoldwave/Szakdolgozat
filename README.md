@@ -1,5 +1,5 @@
 # Szakdolgozat
-Szakdolgozat c. tantárgy kódmelléklete
+Szakdolgozat c. tantárgy kódmelléklete, Vertex AI használata Spring AI-val
 
 ## Tesztelés:  
 Vicc generálás angolul: localhost:8080/ai/generate  
