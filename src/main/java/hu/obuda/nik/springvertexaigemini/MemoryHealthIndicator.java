@@ -27,3 +27,4 @@ public class MemoryHealthIndicator implements HealthIndicator {
                     .build();
         }
     }
+}
