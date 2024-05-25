@@ -22,14 +22,20 @@ public class ChatController {
         this.chatModel = chatModel;
     }
 
-    @GetMapping("/ai/generate")
-    public Map generate(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
-        return Map.of("generation", chatModel.call(message));
+    @GetMapping("/ai/additionTest")
+    public String generateAddition(@RequestParam(value = "message", defaultValue = "2 + 2 = ?") String message) {
+        return chatModel.call(message);
+    }
+
+    @GetMapping("/ai/generateJoke")
+    public String generate(@RequestParam(value = "message", defaultValue = "Mesélj egy viccet, kérlek.") String message) {
+        return chatModel.call(message);
     }
 
     @GetMapping("/ai/generateStream")
-	public Flux<ChatResponse> generateStream(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
+    public Flux<ChatResponse> generateStream(@RequestParam(value = "message", defaultValue = "Mesélj egy viccet, kérlek.") String message) {
         Prompt prompt = new Prompt(new UserMessage(message));
         return chatModel.stream(prompt);
     }
+
 }

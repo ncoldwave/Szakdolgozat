@@ -5,10 +5,12 @@
     <title>Vertex AI Chat</title>
 </head>
 <body>
-<h1>Vertex AI Chat</h1>
-<form th:action="@{/ai/generate}" method="GET">
-    <input type="text" name="message" placeholder="Írja be az üzenetét...">
-    <button type="submit">Küldés</button>
-</form>
-</body>
+    <h1>Vertex AI Chat</h1>
+    <form th:action="@{/chat}" method="GET">
+        <input type="text" name="message" placeholder="Írja be az üzenetét...">
+        <button type="submit">Küldés</button>
+    </form>
+    <br>
+    <div th:text="${response}"></div>
+    </body>
 </html>
