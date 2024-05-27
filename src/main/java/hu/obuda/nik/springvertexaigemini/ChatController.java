@@ -26,14 +26,13 @@ public class ChatController {
     }
 
     @GetMapping("/ai/generateJoke")
-    public String generate(@RequestParam(value = "message", defaultValue = "Mesélj egy viccet, kérlek.") String message) {
+    public String generateJoke(@RequestParam(value = "message", defaultValue = "Mesélj egy viccet, kérlek.") String message) {
         return chatModel.call(message);
     }
 
-    @GetMapping("/ai/generateStream")
+    @GetMapping("(/ai/generateStream)")
     public Flux<ChatResponse> generateStream(@RequestParam(value = "message", defaultValue = "Mesélj egy viccet, kérlek.") String message) {
         Prompt prompt = new Prompt(new UserMessage(message));
         return chatModel.stream(prompt);
     }
-
 }
