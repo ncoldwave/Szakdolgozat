@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Google Gemini Vertex API written with SpringBoot with the aws-serverless-java-container library
+
+Globals:
+  Api:
+    # API Gateway regional endpoints
+    EndpointConfiguration: REGIONAL
+
+Resources:
+  SpringOnLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      #Handler: com.amazonaws.serverless.sample.springboot3.StreamLambdaHandler::handleRequest
+      Handler: hu.obuda.nik.springvertexaigemini.StreamLambdaHandler::handleRequest
+      Runtime: java21
+      Architectures:
+        - x86_64
+      MemorySize: 2848 #1512
+      #Policies: AWSLambdaBasicExecutionRole
+      #Timeout: 60
+      SnapStart:
+        ApplyOn: "PublishedVersions"
+      AutoPublishAlias: "prod"
+      Events:
+        Chat:
+          # Type: HttpApi
+          Type: Api
+          Properties:
+            #TimeoutInMillis: 20000
+            #PayloadFormatVersion: '1.0'
+            Path: /{proxy+}
+            Method: ANY
+
+Outputs:
+  GoogleGeminiVertexApi:
+    Description: URL for application
+    Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/chat'
+    Export:
+      Name: GoogleGeminiVertexApi
