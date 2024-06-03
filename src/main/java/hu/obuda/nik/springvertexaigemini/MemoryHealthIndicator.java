@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class MemoryHealthIndicator implements HealthIndicator {
 
     @Value("${user.actuator.memory.free-percent-limit}")
-    public void setSvnUrl(double freeMemoryPercentLimit) {
+    public void setFreeMemoryPercentLimit(double freeMemoryPercentLimit) {
         this.freeMemoryPercentLimit = freeMemoryPercentLimit;
     }
     double freeMemoryPercentLimit;
