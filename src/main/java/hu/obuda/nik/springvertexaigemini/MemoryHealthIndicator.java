@@ -20,19 +20,19 @@ public class MemoryHealthIndicator implements HealthIndicator {
 
         long freeMemory = Runtime.getRuntime().freeMemory();
         long totalMemory = Runtime.getRuntime().totalMemory();
-        double freeMemoryPercent = ((double) freeMemory / (double) totalMemory);
+        double freeMemoryPercent = ((double) freeMemory / (double) totalMemory) * 100;
 
         if (freeMemoryPercent > freeMemoryPercentLimit) {
             return Health.up()
                     .withDetail("freeMemory", freeMemory + " bytes")
                     .withDetail("totalMemory", totalMemory + " bytes")
-                    .withDetail("freeMemoryPercent", String.format("%.2f", freeMemoryPercent * 100) + "%")
+                    .withDetail("freeMemoryPercent", String.format("%.2f", freeMemoryPercent) + "%")
                     .build();
         } else {
             return Health.down()
                     .withDetail("freeMemory", freeMemory + " bytes")
                     .withDetail("totalMemory", totalMemory + " bytes")
-                    .withDetail("freeMemoryPercent", String.format("%.2f", freeMemoryPercent * 100) + "%")
+                    .withDetail("freeMemoryPercent", String.format("%.2f", freeMemoryPercent) + "%")
                     .build();
         }
 
